@@ -1,0 +1,45 @@
+CLASS zjw_hello_world DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+    METHODS hello IMPORTING iv_text type string optional
+                  RETURNING value(result) TYPE string.
+
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zjw_hello_world IMPLEMENTATION.
+
+
+  METHOD if_oo_adt_classrun~main.
+
+  data(lv_greet) = me->hello(  ).
+
+  out->write( lv_greet ).
+
+  data(lo_hello) = new zjw_hello_world(  ).
+
+  lv_greet = lo_hello->hello( iv_text = | With extra text.| ).
+
+  out->write( lv_greet ).
+
+  ENDMETHOD.
+
+  METHOD hello.
+    IF iv_text IS INITIAL.
+      result = |Hello World from the ABAP Console!|.
+    ELSE.
+      result = |Hello World from the ABAP Console! | && iv_text.
+    ENDIF.
+  ENDMETHOD.
+
+
+ENDCLASS.
