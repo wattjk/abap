@@ -1,0 +1,32 @@
+CLASS zjw_rna_driver DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+
+
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS ZJW_RNA_DRIVER IMPLEMENTATION.
+
+
+  METHOD if_oo_adt_classrun~main.
+
+
+  data(lo_rna) = new zcl_rna_transcription(  ).
+
+  "data(lv_result) = lo_rna->transcribe( 'ACGTGGTCTTAA' ).
+data(lv_result) = lo_rna->transcribe( '' ).
+
+  out->write( lv_result ).
+
+  ENDMETHOD.
+ENDCLASS.
