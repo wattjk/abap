@@ -1,0 +1,46 @@
+CLASS zjw_raindrops_driver DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+
+
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS ZJW_RAINDROPS_DRIVER IMPLEMENTATION.
+
+
+  METHOD if_oo_adt_classrun~main.
+
+
+  data(lo_rd) = new zcl_raindrops(  ).
+
+  data lv_input type i.
+  lv_input = 307.
+  data(lv_response) = lo_rd->raindrops( input = lv_input ).  "1,307, 303, 230, 679, 30
+
+  out->write( |With { lv_input }, response is | && lv_response ).
+
+  lv_input = 303.
+  lv_response = lo_rd->raindrops( input = lv_input ).  "1,307, 303, 230, 679, 30
+
+  out->write( |With { lv_input }, response is | && lv_response ).
+
+  lv_input = 30.
+  lv_response = lo_rd->raindrops( input = lv_input ).  "1,307, 303, 230, 679, 30
+
+  out->write( |With { lv_input }, response is | && lv_response ).
+
+
+
+
+  ENDMETHOD.
+ENDCLASS.
