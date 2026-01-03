@@ -1,0 +1,39 @@
+CLASS zjw_anagram_driver DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+
+
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zjw_anagram_driver IMPLEMENTATION.
+
+
+  METHOD if_oo_adt_classrun~main.
+
+    DATA: lt_cands TYPE string_table.
+
+    APPEND 'STOP' TO lt_cands.
+    APPEND 'pots' TO lt_cands.
+    APPEND 'pits' TO lt_cands.
+    APPEND 'cots' TO lt_cands.
+
+    DATA(lo_anag) = NEW zcl_anagram(  ).
+
+    DATA(lt_output) = lo_anag->anagram( input = |Pots|
+                                       candidates = lt_cands ).
+    LOOP AT lt_output INTO DATA(cand).
+      out->write( cand ).
+    ENDLOOP.
+
+  ENDMETHOD.
+ENDCLASS.
